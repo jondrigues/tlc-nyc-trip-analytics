@@ -1,0 +1,3 @@
+requests
+psycopg2-binary
+apache-airflow>=2.0.0
