@@ -1,5 +1,13 @@
 FROM jupyter/pyspark-notebook
 
+USER root
+RUN apt update && apt install curl wget -y
+RUN wget https://jdbc.postgresql.org/download/postgresql-42.2.24.jar -O /tmp/postgresql-42.2.24.jar
+
+USER jovyan
+
 RUN pip install Unidecode
 RUN pip install psycopg2-binary
 RUN pip install jupyter_kernel_gateway
+
+ENV SPARK_CLASSPATH /tmp/postgresql-42.2.24.jar
