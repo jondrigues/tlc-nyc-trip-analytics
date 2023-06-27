@@ -1,13 +1,5 @@
 version: '2.2'
 services:
-  trino:
-    ports:
-      - "8080:8080"
-    image: "trinodb/trino:414"
-    volumes:
-      - ./trino/etc:/usr/lib/trino/etc:ro
-      - ./trino/catalog:/etc/trino/catalog
-
   pg_analytics:
     container_name: pg_analytics
     image: postgres:12
@@ -25,7 +17,7 @@ services:
   jupyter_lab:
     container_name: jupyter_lab
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile-Jupyter
     ports:
       - "8888:8888"
